@@ -1,0 +1,5 @@
+from .bot import *
+import hikari, lightbulb
+
+Bot.hikari_version = hikari.__version__
+Bot.lightbulb_version = lightbulb.__version__
