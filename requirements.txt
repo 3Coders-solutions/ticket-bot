@@ -4,7 +4,9 @@ aiosignal==1.2.0
 aiosqlite==0.17.0
 Async-OAuthlib==0.0.9
 async-timeout==3.0.1
+asyncio==3.4.3
 attrs==21.4.0
+autopep8==1.6.0
 blinker==1.4
 cachetools==5.0.0
 certifi==2021.10.8
@@ -30,6 +32,7 @@ MarkupSafe==2.0.1
 multidict==6.0.2
 oauthlib==3.2.0
 priority==2.0.0
+pycodestyle==2.8.0
 PyJWT==2.3.0
 python-decouple==3.6
 quart==0.16.3
