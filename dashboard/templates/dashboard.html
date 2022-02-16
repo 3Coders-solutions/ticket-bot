@@ -1,32 +1,320 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/main.css"> <!-- no funca -->
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <title>Dashboard</title>
   </head>
   <body>
-    <h1>Example bot dashboard</h1>
-
-    <h2>The Bot is in: {{guild_count}} servers</h2>
-    <div>
-      <hr />
-      <section class="cards">
-        {% for guild in guilds %}
-        <div class="card">
-          <a href="/dashboard/{{guild.id}}">
-            {% if guild.icon_url is not none %}
-            <img src="{{guild.icon_url}}" class="{{guild.class_color}}" />
-            {% else %}
-            <img
-              src="https://discordapp.com/assets/322c936a8c8be1b803cd94861bdfa868.png"
-              class="{{guild.class_color}}"
-            />
-            {% endif %}
-          </a>
-          <br />
-          {{ guild.name }}
+    <aside class="aside-menu">
+      <header class="aside-menu__header">
+        <img src="img/logo.jpg" alt="app logo"/>
+        <div class="d-flex column">
+          <h1>Staff</h1>
+          <p>Dashboard</p>
         </div>
-        {% endfor %}
-      </section>
-    </div>
+        <button class="button--no-bg" title="nav menu switch" type="button">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      </header>
+      <hr />
+      <div class="aside-menu__nav-container">
+        <nav aria-label="subpages navigation" class="aside-menu__nav">
+          <ul>
+            <li>
+              <a class="button--icon-text" href="#">
+                <i class="fas fa-home"></i>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a class="button--icon-text" href="#">
+                <i class="fas fa-home"></i>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a class="button--icon-text" href="#">
+                <i class="fas fa-home"></i>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a class="button--icon-text" href="#">
+                <i class="fas fa-home"></i>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a class="button--icon-text" href="#">
+                <i class="fas fa-home"></i>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a class="button--icon-text" href="#">
+                <i class="fas fa-home"></i>
+                Dashboard
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="aside-menu__nav-container">
+          <h2 class="font--uppercase aside-menu__nav-title">system</h2>
+          <nav aria-label="system navigation" class="aside-menu__nav">
+            <ul>
+              <li>
+                <a class="button--icon-text" href="#">
+                  <i class="fas fa-home"></i>
+                  Appearance
+                </a>
+              </li>
+              <li>
+                <a class="button--icon-text" href="#">
+                  <i class="fas fa-home"></i>
+                  Appearance
+                </a>
+              </li>
+              <li>
+                <a class="button--icon-text" href="#">
+                  <i class="fas fa-home"></i>
+                  Appearance
+                </a>
+              </li>
+              <li>
+                <a class="button--icon-text" href="#">
+                  <i class="fas fa-home"></i>
+                  Appearance
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="user-card card card--grey">
+        <img src="img/user.jpg" alt="user img"/>
+        <div>
+          <p class="font--accented">Techout</p>
+          <p class="font--uppercase">ceo</p>
+        </div>
+      </div>
+    </aside>
+  
+    <main class="main-section">
+      <header class="main-header">
+        <nav aria-label="header navigation" class="main-header-nav">
+          <form class="input-container">
+            <label for="searcher"></label>
+            <button class="input-button" title="submit search" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+            <input class="input main-header-nav__searcher" id="searcher" placeholder="Enter keywords ...">
+          </form>
+          <div class="settings-container">
+            <select class="button--no-bg" title="language selector">
+              <option selected>EN</option>
+              <option>ES</option>
+              <option>FR</option>
+              <option>CH</option>
+            </select>
+            <button class="button--icon" title="theme switch" type="button">
+              <i class="far fa-sun"></i>
+            </button>
+            <button class="button--icon" title="notifications" type="button">
+              <i class="far fa-bell"></i>
+            </button>
+            <button class="button--icon" title="user menu" type="button">
+              <i class="far fa-user"></i>
+            </button>
+          </div>
+        </nav>
+      </header>
+    
+      <main>
+        <h2>Dashboard</h2>
+        <section class="dashboard"> <!-- grid container -->
+          <ul id="cards-list"> <!-- cards list -->
+            <li>
+              <div class="card stats-card">
+                <div class="card__icon-container --accent-blue">
+                  <i class="fas fa-signal"></i>
+                </div>
+                <div class="stats-card__stats-container">
+                  <p class="font--accented">1,478,286</p>
+                  <p>Total tickets</p>
+                  <p><span class="status-up"><i class="fas fa-caret-up"></i> 4.07%</span> Last month</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="card stats-card">
+                <div>
+                  <div class="card__icon-container --accent-orange">
+                    <i class="far fa-file"></i>
+                  </div>
+                </div>
+                <div class="stats-card__stats-container">
+                  <p class="font--accented">478,520</p>
+                  <p>Example</p>
+                  <p><span class="status-up"><i class="fas fa-caret-up"></i> 0.24%</span> Last month</p>
+                </div>
+              </div>  
+            </li>
+            <li>
+              <div class="card stats-card">
+                <div>
+                  <div class="card__icon-container --accent-purple">
+                    <i class="far fa-envelope"></i>
+                  </div>
+                </div>
+                <div class="stats-card__stats-container">
+                  <p class="font--accented">1,478,286</p>
+                  <p>Total emails</p>
+                  <p><span class="status-down"><i class="fas fa-caret-down"></i> 1.64%</span> Last month</p>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="card stats-card">
+                <div>
+                  <div class="card__icon-container --accent-green">
+                    <i class="fas fa-feather"></i>
+                  </div>
+                </div>
+                <div class="stats-card__stats-container">
+                  <p class="font--accented">1,478,286</p>
+                  <p>Total customers</p>
+                  <p><span class="status-normal"><i class="fas fa-caret-right"></i> 0.00%</span> Last month</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+          <section class="card" id="tickets-statistics"> <!-- tickets statistics -->
+            <header>
+              <div>
+                <h3>Tickets statistics</h3>
+                <p>Nov - July</p>
+              </div>
+              <div>
+                <!-- references -->
+              </div>
+            </header>
+            <!-- graphic here -->
+          </section>
+          <table id="thumbnail-table"> <!-- table -->
+            <thead>
+              <tr>
+                <th>Thumbnail</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img src="" alt="example" /></td>
+                <td>Example post</td>
+                <td><i class="far fa-user"></i> <span>Example name</span></td>
+                <td><span class="--accent-blue">Active</span></td>
+                <td>17.04.2021</td>
+                <td><button class="button--no-bg" type="button">...</button></td>
+              </tr>
+              <tr>
+                <td><img src="" alt="example" /></td>
+                <td>Example post</td>
+                <td><i class="far fa-user"></i> <span>Example name</span></td>
+                <td><span class="--accent-blue">Active</span></td>
+                <td>17.04.2021</td>
+                <td><button class="button--no-bg" type="button">...</button></td>
+              </tr>
+              <tr>
+                <td><img src="" alt="example" /></td>
+                <td>Example post</td>
+                <td><i class="far fa-user"></i> <span>Example name</span></td>
+                <td><span class="--accent-orange">Pending</span></td>
+                <td>17.04.2021</td>
+                <td><button class="button--no-bg" type="button">...</button></td>
+              </tr>
+              <tr>
+                <td><img src="" alt="example" /></td>
+                <td>Example post</td>
+                <td><i class="far fa-user"></i> <span>Example name</span></td>
+                <td><span class="--accent-blue">Active</span></td>
+                <td>17.04.2021</td>
+                <td><button class="button--no-bg" type="button">...</button></td>
+              </tr>
+              <tr>
+                <td><img src="" alt="example" /></td>
+                <td>Example post</td>
+                <td><i class="far fa-user"></i> <span>Example name</span></td>
+                <td><span class="--accent-blue">Active</span></td>
+                <td>17.04.2021</td>
+                <td><button class="button--no-bg" type="button">...</button></td>
+              </tr>
+            </tbody>
+          </table>
+          <section class="card card--blue" id="new-customers"> <!-- new customers -->
+            <header>
+              <h3>New Customers <span>+958</span></h3>
+              <p>28 Daily Avg.</p>
+            </header>
+          </section>
+          <section class="card" id="top-categories"> <!-- top categories -->
+            <header>
+              <h3>Top categories</h3>
+              <p>28 Categories, 23452 Items</p>
+            </header>
+            <ul class="top-categories__list">
+              <li class="top-categories__list-item">
+                <div>
+                  <p class="font--accented">Example</p>
+                  <p>Example category description</p>
+                </div>
+                <div>
+                  <p">8.2k</p>
+                  <p class="--accent-red">+472</p>
+                </div>
+              </li>
+              <li class="top-categories__list-item">
+                <div>
+                  <p class="font--accented">Example</p>
+                  <p>Example category description</p>
+                </div>
+                <div">
+                  <p>8.2k</p>
+                  <p class="--accent-purple">+472</p>
+                </div>
+              </li>
+              <li class="top-categories__list-item">
+                <div>
+                  <p class="font--accented">Example</p>
+                  <p>Example category description</p>
+                </div>
+                <div">
+                  <p>8.2k</p>
+                  <p class="--accent-green">+472</p>
+                </div>
+              </li>
+              <li class="top-categories__list-item">
+                <div>
+                  <p class="font--accented">Example</p>
+                  <p>Example category description</p>
+                </div>
+                <div">
+                  <p>8.2k</p>
+                  <p class="--accent-orange">+472</p>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </section>
+      </main>
+    </section>
   </body>
 </html>

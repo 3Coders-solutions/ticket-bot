@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="./styles/main.css">
     <title>Home Page</title>
   </head>
   <body>
-    <p align="center">
+    <p>
       {% if not authorized %}
       <a href="/login"><button>Login with discord</button></a>
       {% else %}
       <a href="/dashboard"><button>Open Dashboard</button></a>
-      {%endif %}
+      {% endif %}
     </p>
   </body>
 </html>
