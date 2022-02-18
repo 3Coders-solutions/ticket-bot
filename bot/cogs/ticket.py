@@ -11,6 +11,7 @@ choices=("Assistance", "Support")
 @lightbulb.implements(lightbulb.SlashCommandGroup)
 async def ticket(ctx: lightbulb.Context) -> None:
     await ctx.respond("Invoked ticket? What, how.")
+    return
 
 
 @ticket.child
