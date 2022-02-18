@@ -3,7 +3,7 @@ aiohttp==3.7.4.post0
 aiosignal==1.2.0
 aiosqlite==0.17.0
 Async-OAuthlib==0.0.9
-async-timeout==3.0.1
+async-timeout==4.0.2
 asyncio==3.4.3
 attrs==21.4.0
 autopep8==1.6.0
