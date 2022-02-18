@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/styles/main.css"> <!-- no funca -->
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <script>
+      console.log("{{ guild_count }}");
+      console.log("{{ matching }}");
+    </script>
+    <aside class="aside-menu">
+      <header class="aside-menu__header">
+        <img src="img/logo.jpg" alt="app logo"/>
+        <div class="d-flex column">
+          <h1>Staff</h1>
+          <p>Dashboard</p>
+        </div>
+        <button class="button--no-bg" title="nav menu switch" type="button">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      </header>
+      <hr />
+      <div class="aside-menu__nav-container">
+        <nav aria-label="subpages navigation" class="aside-menu__nav">
+          <ul>
+            <li>
+              <a class="button--icon-text" href="#">
+                <i class="fas fa-home"></i>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a class="button--icon-text" href="#">
+                <i class="fas fa-home"></i>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a class="button--icon-text" href="#">
+                <i class="fas fa-home"></i>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a class="button--icon-text" href="#">
+                <i class="fas fa-home"></i>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a class="button--icon-text" href="#">
+                <i class="fas fa-home"></i>
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a class="button--icon-text" href="#">
+                <i class="fas fa-home"></i>
+                Dashboard
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div class="aside-menu__nav-container">
+          <h2 class="font--uppercase aside-menu__nav-title">system</h2>
+          <nav aria-label="system navigation" class="aside-menu__nav">
+            <ul>
+              <li>
+                <a class="button--icon-text" href="#">
+                  <i class="fas fa-home"></i>
+                  Appearance
+                </a>
+              </li>
+              <li>
+                <a class="button--icon-text" href="#">
+                  <i class="fas fa-home"></i>
+                  Appearance
+                </a>
+              </li>
+              <li>
+                <a class="button--icon-text" href="#">
+                  <i class="fas fa-home"></i>
+                  Appearance
+                </a>
+              </li>
+              <li>
+                <a class="button--icon-text" href="#">
+                  <i class="fas fa-home"></i>
+                  Appearance
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+      <div class="user-card card card--grey">
+        <img src="img/user.jpg" alt="user img"/>
+        <div>
+          <p class="font--accented">Techout</p>
+          <p class="font--uppercase">ceo</p>
+        </div>
+      </div>
+    </aside>
+  
+    <main class="main-section">
+      <header class="main-header">
+        <nav aria-label="header navigation" class="main-header-nav">
+          <form class="input-container">
+            <label for="searcher"></label>
+            <button class="input-button" title="submit search" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+            <input class="input main-header-nav__searcher" id="searcher" placeholder="Enter keywords ...">
+          </form>
+          <div class="settings-container">
+            <select class="button--no-bg" title="language selector">
+              <option selected>EN</option>
+              <option>ES</option>
+              <option>FR</option>
+              <option>CH</option>
+            </select>
+            <button class="button--icon" title="theme switch" type="button">
+              <i class="far fa-sun"></i>
+            </button>
+            <button class="button--icon" title="notifications" type="button">
+              <i class="far fa-bell"></i>
+            </button>
+            <button class="button--icon" title="user menu" type="button">
+              <i class="far fa-user"></i>
+            </button>
+          </div>
+        </nav>
+      </header>
+    
+      <main>
+        <h2>Dashboard</h2>
+        <section class="dashboard"> <!-- grid container -->
+          <ul id="cards-list"> <!-- cards list -->
+            {% for guild in guild_ids %}
+            <li>
+              <div class="card stats-card">
+                <div class="card__icon-container --accent-blue">
+                  <i class=""><img src={{guild.icon_url}} alt="server icon" /></i>
+                </div>
+                <div class="stats-card__stats-container">
+                  <p class="font--accented">{{ guild.name }}</p>
+                  <button class="button--text --accent-blue" type="button">Go to dashboard</button>
+                </div>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+
+        </section>
+      </main>
+    </section>
+  </body>
+</html>

@@ -156,10 +156,25 @@ hr {
   color: inherit;
 }
 
+.button--text {
+  border: none;
+  border-radius: 25px;
+  display: block;
+  padding: .25em .75em;
+  width: 100%;
+}
+
 .card {
   border-radius: 10px;
   background-color: var(--bg-card);
   padding: 1rem;
+}
+
+.card p {
+  max-width: 20ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .card--blue {
