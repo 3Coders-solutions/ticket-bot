@@ -20,6 +20,7 @@ async def ticket(ctx: lightbulb.Context) -> None:
 @lightbulb.implements(lightbulb.SlashSubCommand)
 async def bar(ctx: lightbulb.Context) -> None:
     created_channel = await channels.create_channel(ctx)
+    await channels.send_ticket_message(ctx, created_channel)
     await ctx.respond(f'Succesfully created ticket! <#{created_channel.id}>', flags=hikari.MessageFlag.EPHEMERAL)
     return
 
