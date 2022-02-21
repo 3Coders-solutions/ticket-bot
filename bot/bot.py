@@ -1,7 +1,5 @@
 # Import the command handler
 import lightbulb
-from decouple import config
-from discord.ext import ipc
 from .helpers import db_handler
 # Instantiate a Bot instance
 
@@ -16,6 +14,7 @@ class Bot(lightbulb.BotApp):
         )
         db_handler.initialise_databases()
         self.load_extensions_from("bot/cogs")
+        self.load_extensions_from("bot/events")
 
 
 
