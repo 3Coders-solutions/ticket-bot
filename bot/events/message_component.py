@@ -12,8 +12,7 @@ plugin = lightbulb.Plugin("Message Components",
 
 @plugin.listener(hikari.InteractionCreateEvent, bind=True)
 async def message_components(plugin: lightbulb.Plugin, event: hikari.InteractionCreateEvent) -> None:
-    if event.interaction.type != hikari.InteractionType.MESSAGE_COMPONENT:
-        return
+    if event.interaction.type != hikari.InteractionType.MESSAGE_COMPONENT: return
     interaction: hikari.ComponentInteraction = event.interaction
     if(interaction.custom_id.startswith("ticket_")):
         return await ticket_handler(interaction, plugin.bot)
@@ -22,6 +21,7 @@ async def message_components(plugin: lightbulb.Plugin, event: hikari.Interaction
 async def ticket_handler(interaction: hikari.ComponentInteraction, bot: hikari.GatewayBot):
     if(interaction.custom_id == "ticket_close"):
         return await confirm_menu(interaction, bot)
+    return
 
 async def confirm_menu(interaction: hikari.ComponentInteraction, bot: hikari.GatewayBot):
     row = components.confirmation_menu()
@@ -30,7 +30,7 @@ async def confirm_menu(interaction: hikari.ComponentInteraction, bot: hikari.Gat
       flags=MessageFlag.EPHEMERAL,
       content="Confirm ticket close.", 
       components=[row])
-    stream = bot.stream(events.InteractionCreateEvent, timeout=30).filter(("interaction.user.id", interaction.user.id))
+    stream = bot.stream(events.InteractionCreateEvent, timeout=30).filter(("interaction.user.id", interaction.user.id),("interaction.channel_id", interaction.channel_id))
     stream.open()
     async for event in stream:
         if event.interaction.custom_id.startswith("ticket_confirmation"):
