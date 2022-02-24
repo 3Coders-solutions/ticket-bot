@@ -1,7 +1,7 @@
 from quart import Quart, render_template, redirect, url_for
 from quart_discord import DiscordOAuth2Session, models
 from decouple import config
-from helpers import utils
+from helpers import helpers
 import hikari
 import discord
 
@@ -17,7 +17,7 @@ app.config["DISCORD_CLIENT_SECRET"] = config('DISCORD_CLIENT_SECRET')
 app.config["DISCORD_REDIRECT_URI"] = config('DISCORD_REDIRECT_URI')
 discord = DiscordOAuth2Session(app)
 
-app.add_template_global(utils.server_abbr)
+app.add_template_global(helpers.server_abbr)
 
 @app.route("/")
 async def home():
