@@ -145,8 +145,12 @@
             {% for guild in guild_ids %}
             <li>
               <div class="card stats-card">
-                <div class="card__icon-container --accent-blue">
-                  <i class=""><img src={{guild.icon_url}} alt="server icon" /></i>
+                <div class="card__icon-container">
+                  {% if guild.icon_url %}
+                  <img src={{guild.icon_url}} alt="server icon" />
+                  {% else %}
+                  <div>{{ server_abbr(guild.name) }}</div>
+                  {% endif %}
                 </div>
                 <div class="stats-card__stats-container">
                   <p class="font--accented">{{ guild.name }}</p>
@@ -160,5 +164,16 @@
         </section>
       </main>
     </section>
+
+    <script>
+      function onImgError(image, guildName = "pepe") {
+        const altImg = image.nextElementSibling;
+        altImg.removeAttribute('hidden');
+        
+        // console.log(guildName)
+
+        image.remove();
+      }
+    </script>
   </body>
 </html>

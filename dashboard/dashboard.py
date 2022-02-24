@@ -1,7 +1,8 @@
 from quart import Quart, render_template, redirect, url_for
-from quart_discord import DiscordOAuth2Session
+from quart_discord import DiscordOAuth2Session, models
 from decouple import config
 import hikari
+import discord
 
 app = Quart(__name__)
 rest = hikari.RESTApp()
@@ -59,7 +60,8 @@ async def dashboard():
 
 @app.route("/guilds")
 async def guilds():
-    guild_ids = await discord.fetch_guilds()
+    user_guilds: list[models.Guild] = await discord.fetch_guilds()
+    guild_ids:list[models.Guild] = list(filter(lambda guild: guild.permissions.can_manage_server == True, user_guilds))
     return await render_template("guilds.html", guild_ids=guild_ids)
 
 if __name__ == "__main__":
