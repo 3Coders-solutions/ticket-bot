@@ -4,16 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/styles/main.css"> <!-- no funca -->
+    <link rel="stylesheet" href="static/styles/main.css">
     <!-- font awesome -->
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <title>Dashboard</title>
   </head>
   <body>
-    <script>
-      console.log("{{ guild_count }}");
-      console.log("{{ matching }}");
-    </script>
     <aside class="aside-menu">
       <header class="aside-menu__header">
         <img src="img/logo.jpg" alt="app logo"/>
@@ -140,13 +136,17 @@
     
       <main>
         <h2>Dashboard</h2>
-        <section class="dashboard"> <!-- grid container -->
-          <ul id="cards-list"> <!-- cards list -->
+        <section class="dashboard">
+          <ul id="cards-list">
             {% for guild in guild_ids %}
             <li>
               <div class="card stats-card">
-                <div class="card__icon-container --accent-blue">
-                  <i class=""><img src={{guild.icon_url}} alt="server icon" /></i>
+                <div class="card__icon-container">
+                  {% if guild.icon_url %}
+                  <img src={{guild.icon_url}} alt="server icon" />
+                  {% else %}
+                  <div>{{ server_abbr(guild.name) }}</div>
+                  {% endif %}
                 </div>
                 <div class="stats-card__stats-container">
                   <p class="font--accented">{{ guild.name }}</p>
