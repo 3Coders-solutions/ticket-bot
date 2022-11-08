@@ -1,4 +1,4 @@
-hikari==2.0.0.dev106
+hikari==2.0.0.dev112
 hikari-lightbulb==2.2.0
 python-decouple==3.6
 quart==0.16.3
